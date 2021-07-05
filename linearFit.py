@@ -1,5 +1,6 @@
 from typing import Tuple
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 
 """
@@ -59,11 +60,23 @@ if __name__ == "__main__":
     We can randomly generate this sample with specified
     constraint easily with numpy
     """
-    rng = np.random.default_rng()
+    # rng = np.random.default_rng()
 
-    sampleSize = 10000 # just an example
-    weight = 86.8 + 0.5 * np.random.standard_normal(sampleSize)
-    height = 176.2 + 0.2 * np.random.standard_normal(sampleSize)
+    # sampleSize = 10000 # just an example
+    # weight = 86.8 + 0.5 * np.random.standard_normal(sampleSize)
+    # height = 176.2 + 0.2 * np.random.standard_normal(sampleSize)
 
-    data = [height, weight]
+    # data = [height, weight]
+    # lsfLinear(data, True)
+
+    """
+    Correalation between SAT score and GPA
+
+    Fetched from https://www.kaggle.com/luddarell/101-simple-linear-regressioncsv
+    """
+    dataset = pd.read_csv("1.01. Simple linear regression.csv")
+    datacsv = dataset.head(84)
+    x = datacsv['SAT']
+    y = datacsv['GPA']
+    data = [x, y]
     lsfLinear(data, True)
